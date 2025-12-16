@@ -1,6 +1,5 @@
 package com.example.springbatch.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -11,34 +10,38 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.transaction.PlatformTransactionManager;
 
-@RequiredArgsConstructor
 @Configuration
 public class HelloJobConfiguration {
+
     @Bean
-    public Job job(JobRepository jobRepository, Step step1, Step step2) {
-        return new JobBuilder("Job", jobRepository) // Factory 대신 new JobBuilder 사용
-                .start(step1)
-                .next(step2)
+    public Job helloJob(JobRepository jobRepository, Step helloStep1, Step helloStep2) {
+        return new JobBuilder("helloJob", jobRepository)
+                .start(helloStep1)
+                .next(helloStep2)
                 .build();
     }
 
     @Bean
-    public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("step1", jobRepository) // Factory 대신 new StepBuilder 사용
+    public Step helloStep1(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager) {
+        return new StepBuilder("helloStep1", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step1 has executed");
+                    System.out.println(" ============================");
+                    System.out.println(" >> Hello Spring Batch");
+                    System.out.println(" ============================");
                     return RepeatStatus.FINISHED;
-                }, transactionManager) // Batch 5부터는 TransactionManager 명시 필수
+                }, platformTransactionManager) // Batch 5.0부터 필수
                 .build();
     }
 
     @Bean
-    public Step step2(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("step2", jobRepository)
+    public Step helloStep2(JobRepository jobRepository, PlatformTransactionManager platformTransactionManager) {
+        return new StepBuilder("helloStep2", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step2 has executed");
+                    System.out.println(" ============================");
+                    System.out.println(" >> Step2 has executed");
+                    System.out.println(" ============================");
                     return RepeatStatus.FINISHED;
-                }, transactionManager)
+                }, platformTransactionManager) // Batch 5.0부터 필수
                 .build();
     }
 }
