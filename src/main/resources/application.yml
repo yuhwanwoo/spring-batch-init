@@ -25,10 +25,10 @@ spring:
       on-profile: mysql
   datasource:
     hikari:
-      jdbc-url: jdbc:mysql://localhost:3306/springbatch?useUnicode=true&characterEncoding=utf8
+      jdbc-url: jdbc:mysql://localhost:53307/springbatch?useUnicode=true&characterEncoding=utf8
       username: root
       password: pass
-      driver-class-name: com.mysql.jdbc.Driver
+      driver-class-name: com.mysql.cj.jdbc.Driver
   batch:
     jdbc:
       initialize-schema: always
