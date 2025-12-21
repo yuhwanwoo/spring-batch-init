@@ -14,7 +14,7 @@ import org.springframework.transaction.PlatformTransactionManager;
 public class DBJobConfiguration {
 
     @Bean
-    public Job helloJob(JobRepository jobRepository, Step step1, Step step2, Step step3) {
+    public Job job(JobRepository jobRepository, Step step1, Step step2, Step step3) {
         return new JobBuilder("Job", jobRepository) // Factory 대신 직접 생성
                 .start(step1)
                 .next(step2)
