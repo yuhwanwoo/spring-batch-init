@@ -1,4 +1,4 @@
-package com.example.springbatch;
+package com.example.springbatch.jobparameter;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParameters;
@@ -12,22 +12,22 @@ import org.springframework.stereotype.Component;
 import java.util.Date;
 
 @Component
-public class JobRunner implements ApplicationRunner {
+public class JobParameterTest implements ApplicationRunner {
 
     @Autowired
-    private JobLauncher jobLauncher;
+    JobLauncher jobLauncher;
 
     @Autowired
-    private Job batchJob;
+    Job parameterJob;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-//        JobParameters jobParameters = new JobParametersBuilder()
-//                .addString("name", "user1")
-//                .addDate("reqDate", new Date())
-//                .toJobParameters();
-//
-//        jobLauncher.run(batchJob,jobParameters);
+        JobParameters jobParameters = new JobParametersBuilder().addString("name", "user1")
+                .addLong("seq", 1L)
+                .addDate("date", new Date())
+                .toJobParameters();
+
+        jobLauncher.run(parameterJob, jobParameters);
     }
 }
