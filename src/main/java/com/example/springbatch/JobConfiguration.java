@@ -23,9 +23,9 @@ public class JobConfiguration {
 
     @Bean
     public Step step1(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("step1", jobRepository)
+        return new StepBuilder("jobStep1", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step1 has executed");
+                    System.out.println("jobStep1 has executed");
                     return RepeatStatus.FINISHED;
                 }, transactionManager) // transactionManager 명시 필수
                 .build();
@@ -35,7 +35,7 @@ public class JobConfiguration {
     public Step step2(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("step2", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step2 has executed");
+                    System.out.println("jobStep2 has executed");
                     return RepeatStatus.FINISHED;
                 }, transactionManager) // transactionManager 명시 필수
                 .build();

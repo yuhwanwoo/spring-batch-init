@@ -26,7 +26,7 @@ public class DBJobConfiguration {
     public Step dbStep1(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("step1", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step1 has executed");
+                    System.out.println("dbStep1 has executed");
                     return RepeatStatus.FINISHED;
                 }, transactionManager) // TransactionManager 필수
                 .build();
@@ -36,7 +36,7 @@ public class DBJobConfiguration {
     public Step dbStep2(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
         return new StepBuilder("step2", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
-                    System.out.println("step2 has executed");
+                    System.out.println("dbStep2 has executed");
                     return RepeatStatus.FINISHED;
                 }, transactionManager)
                 .build();
@@ -44,7 +44,7 @@ public class DBJobConfiguration {
 
     @Bean
     public Step dbStep3(JobRepository jobRepository, PlatformTransactionManager transactionManager) {
-        return new StepBuilder("step3", jobRepository)
+        return new StepBuilder("dbStep3", jobRepository)
                 .tasklet((contribution, chunkContext) -> {
                     System.out.println("step3 has executed");
                     return RepeatStatus.FINISHED;

@@ -19,12 +19,12 @@ public class SpringBatchApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner(JobLauncher jobLauncher, Job job) {
+    public CommandLineRunner commandLineRunner(JobLauncher jobLauncher, Job executionJob) {
         return args -> {
             JobParameters jobParameters = new JobParametersBuilder()
-                    .addLong("time", System.currentTimeMillis())
+                    // .addLong("time", System.currentTimeMillis())
                     .toJobParameters();
-            jobLauncher.run(job, jobParameters);
+            jobLauncher.run(executionJob, jobParameters);
         };
     }
 }
