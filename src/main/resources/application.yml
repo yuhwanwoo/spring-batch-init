@@ -1,6 +1,10 @@
 spring:
   profiles:
     active: local
+  batch:
+    job:
+      #      enabled: false
+#      name: ${job.name:NONE}
 
 ---
 spring:
