@@ -15,16 +15,16 @@ public class CustomItemWriter implements ItemStreamWriter<String> {
 
     @Override
     public void open(ExecutionContext executionContext) throws ItemStreamException {
-        System.out.println("");
+        System.out.println("open");
     }
 
     @Override
     public void update(ExecutionContext executionContext) throws ItemStreamException {
-        System.out.println("");
+        System.out.println("update");
     }
 
     @Override
     public void close() throws ItemStreamException {
-        System.out.println("");
+        System.out.println("close");
     }
 }
