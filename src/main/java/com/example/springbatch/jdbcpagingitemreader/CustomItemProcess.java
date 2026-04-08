@@ -1,4 +1,4 @@
-package com.example.springbatch.jpacursoritemreader;
+package com.example.springbatch.jdbcpagingitemreader;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.batch.item.ItemProcessor;

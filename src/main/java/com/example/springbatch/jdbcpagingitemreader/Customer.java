@@ -1,4 +1,4 @@
-package com.example.springbatch.jpacursoritemreader;
+package com.example.springbatch.jdbcpagingitemreader;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

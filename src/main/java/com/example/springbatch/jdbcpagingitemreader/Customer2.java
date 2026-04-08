@@ -1,4 +1,4 @@
-package com.example.springbatch.jpacursoritemreader;
+package com.example.springbatch.jdbcpagingitemreader;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
