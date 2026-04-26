@@ -9,6 +9,7 @@ import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.support.ListItemReader;
 import org.springframework.context.annotation.Bean;
@@ -72,9 +73,8 @@ public class RetryConfiguration {
     }
 
     @Bean
-    public RetryItemProcessor retryProcessor() {
+    public ItemProcessor<String, Customer> retryProcessor() {
         // 제네릭 타입을 명시하여 원시 타입 경고 제거
-//        return new RetryItemProcessor();
         return new RetryItemProcessor();
     }
 
